@@ -16,78 +16,92 @@ export function Home() {
 
 	return (
 		<MaxWidthWrapper>
-			<MainInfo>
-				<Image
-					source={car}
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<MainInfo>
+					<Image
+						source={car}
+						style={{
+							width: 60,
+							height: 60,
+							marginRight: 10,
+						}}
+					/>
+					<View>
+						<Text
+							style={{
+								fontSize: theme.FONTSIZES.H5,
+								color: theme.COLORS.WHITE,
+								fontFamily: theme.FONTS.BOLD,
+							}}
+						>
+							Viagens realizadas
+						</Text>
+						<Text
+							style={{
+								fontSize: theme.FONTSIZES.H7,
+								color: theme.COLORS.WHITE50,
+								fontFamily: theme.FONTS.MEDIUM,
+							}}
+						>
+							658
+						</Text>
+					</View>
+				</MainInfo>
+				<View
 					style={{
-						width: 60,
-						height: 60,
-						marginRight: 10,
+						justifyContent: "center",
+						marginVertical: 80,
 					}}
-				/>
-				<View>
-					<Text
-						style={{
-							fontSize: theme.FONTSIZES.H5,
-							color: theme.COLORS.WHITE,
-							fontFamily: theme.FONTS.BOLD,
-						}}
+				>
+					<SectionTitle>Destaques</SectionTitle>
+					<ScrollView
+						horizontal={true}
+						showsHorizontalScrollIndicator={false}
 					>
-						Viagens realizadas
-					</Text>
-					<Text
-						style={{
-							fontSize: theme.FONTSIZES.H7,
-							color: theme.COLORS.WHITE50,
-							fontFamily: theme.FONTS.MEDIUM,
-						}}
-					>
-						658
-					</Text>
+						<DestaqueCard
+							name="Último pagador"
+							description="João Rupp"
+							icon="dollar-sign"
+						/>
+						<DestaqueCard
+							name="Mais viagens"
+							description="Isabelle S. Cruz"
+							icon="car"
+						/>
+						<DestaqueCard
+							name="Mais idas"
+							description="Isabelle S. Cruz"
+							icon="plane-departure"
+						/>
+						<DestaqueCard
+							name="Mais voltas"
+							description="Nicole Rocha"
+							icon="plane-arrival"
+						/>
+						<DestaqueCard
+							name="Mal pagador"
+							description="Alice Martins"
+							icon="skull"
+						/>
+					</ScrollView>
 				</View>
-			</MainInfo>
-			<View
-				style={{
-					justifyContent: "center",
-					marginVertical: 80,
-				}}
-			>
-				<SectionTitle>Destaques</SectionTitle>
-				<ScrollView
-					horizontal={true}
-					showsHorizontalScrollIndicator={false}
+				<View
+					style={{
+						justifyContent: "center",
+					}}
 				>
-					<DestaqueCard
-						name="Último pagador"
-						description="João Rupp"
-					/>
-					<DestaqueCard
-						name="Último pagador"
-						description="João Rupp"
-					/>
-					<DestaqueCard
-						name="Último pagador"
-						description="João Rupp"
-					/>
-				</ScrollView>
-			</View>
-			<View
-				style={{
-					justifyContent: "center",
-				}}
-			>
-				<SectionTitle>Última Viagem</SectionTitle>
-				<ScrollView
-					horizontal={true}
-					showsHorizontalScrollIndicator={false}
-				>
-					<Pill name="João Rupp" avatar="whiteManHat" />
-					<Pill name="Isabelle Cruz" avatar="blackWomanHappy" />
-					<Pill name="Michelle Brito" avatar="whiteWoman" />
-					<Pill name="Nicole Rocha" avatar="blackWomanNeutral" />
-				</ScrollView>
-			</View>
-			{/* <Lorem /> */}
+					<SectionTitle>Última Viagem</SectionTitle>
+					<ScrollView
+						horizontal={true}
+						showsHorizontalScrollIndicator={false}
+					>
+						<Pill name="João Rupp" avatar="whiteManHat" />
+						<Pill name="Isabelle Cruz" avatar="blackWomanHappy" />
+						<Pill name="Michelle Brito" avatar="whiteWoman" />
+						<Pill name="Nicole Rocha" avatar="blackWomanNeutral" />
+					</ScrollView>
+				</View>
+			</ScrollView>
 		</MaxWidthWrapper>
 	)
 }
