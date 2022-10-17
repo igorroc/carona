@@ -5,7 +5,7 @@ import {
 	Text,
 	TouchableHighlight,
 	TouchableWithoutFeedback,
-	View
+	View,
 } from "react-native"
 import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../MaxWidthWrapper"
@@ -38,7 +38,7 @@ export function Header() {
 							style={{
 								color: showSaldo
 									? theme.COLORS.WHITE
-									: theme.COLORS.GRAY
+									: theme.COLORS.GRAY,
 							}}
 						>
 							Meu saldo
@@ -48,7 +48,8 @@ export function Header() {
 								<View
 									style={{
 										flexDirection: "row",
-										alignItems: "center"
+										alignItems: "center",
+										marginTop: 50,
 									}}
 								>
 									<FontAwesome5
@@ -64,7 +65,7 @@ export function Header() {
 											marginLeft: 10,
 											fontSize: theme.FONTSIZES.H7,
 											fontFamily: theme.FONTS.SEMIBOLD,
-											color: theme.COLORS.WHITE
+											color: theme.COLORS.WHITE,
 										}}
 									>
 										{saldo}
@@ -76,7 +77,8 @@ export function Header() {
 								<View
 									style={{
 										flexDirection: "row",
-										alignItems: "center"
+										alignItems: "center",
+										marginTop: 50,
 									}}
 								>
 									<FontAwesome5
@@ -90,7 +92,7 @@ export function Header() {
 											height: 20,
 											borderRadius: 5,
 											marginLeft: 10,
-											backgroundColor: theme.COLORS.GRAY
+											backgroundColor: theme.COLORS.GRAY,
 										}}
 									/>
 								</View>

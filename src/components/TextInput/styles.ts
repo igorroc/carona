@@ -3,7 +3,7 @@ import styled from "styled-components/native"
 import Theme from "../../theme"
 
 export const Input = styled.TextInput.attrs({
-	placeholderTextColor: Theme.COLORS.WHITE50,
+	placeholderTextColor: Theme.COLORS.WHITE50
 })`
 	width: 100%;
 	height: 60px;
@@ -13,4 +13,6 @@ export const Input = styled.TextInput.attrs({
 	margin-bottom: 8px;
 	font-size: 16px;
 	color: ${Theme.COLORS.WHITE};
+	font-family: ${Theme.FONTS.REGULAR};
+	
 `

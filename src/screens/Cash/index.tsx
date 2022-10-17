@@ -81,7 +81,7 @@ export function Cash() {
 							name="check"
 							color={theme.COLORS.WHITE}
 							style={{
-								fontSize: theme.FONTSIZES.H3,
+								fontSize: theme.FONTSIZES.H5,
 								fontFamily: theme.FONTS.REGULAR
 							}}
 						/>

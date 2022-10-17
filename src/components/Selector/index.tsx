@@ -12,7 +12,7 @@ export function Selector(props: SelectorProps) {
 	return (
 		<Wrapper
 			style={{
-				backgroundColor: theme.COLORS.WHITE10,
+				backgroundColor: theme.COLORS.DARKGRAY,
 			}}
 		>
 			{props.children}
