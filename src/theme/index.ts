@@ -9,7 +9,7 @@ export default {
 		INFO: "#2F95DC",
 		WHITE: "#FFF",
 		BLACK: "#151414",
-		GREY: "#767575",
+		GRAY: "#767575",
 		TRANSPARENT: "transparent",
 	},
 	FONTS: {
@@ -25,5 +25,10 @@ export default {
 		H4: 26,
 		H5: 22,
 		H6: 20,
+		H7: 18,
+		H8: 16,
 	},
+	SIZES: {
+		BASE: 16,
+	}
 }
