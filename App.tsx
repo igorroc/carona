@@ -20,6 +20,7 @@ import { NewTrip } from "./src/screens/NewTrip"
 import { User } from "./src/screens/User"
 import { Cash } from "./src/screens/Cash"
 import { Calculator } from "./src/screens/Calculator"
+import { Header } from "./src/components/Header"
 
 const Tab = createBottomTabNavigator()
 
@@ -57,11 +58,38 @@ export default function App() {
 
 	return (
 		<ThemeProvider theme={THEME}>
-			<NavigationContainer>
+			<NavigationContainer
+				theme={{
+					dark: true,
+					colors: {
+						primary: THEME.COLORS.PRIMARY,
+						background: THEME.COLORS.BACKGROUND,
+						card: THEME.COLORS.BACKGROUND,
+						text: THEME.COLORS.TEXT,
+						border: THEME.COLORS.BORDER,
+						notification: THEME.COLORS.NOTIFICATION,
+					},
+				}}
+			>
 				<Tab.Navigator
 					screenOptions={({ route }) => ({
-						// headerShown: false,
 						headerTitle: "",
+						headerStyle: {
+							borderBottomWidth: 0,
+							borderBottomColor: "transparent",
+							shadowColor: "transparent",
+							height: 200,
+						},
+						tabBarInactiveTintColor: THEME.COLORS.GRAY,
+						tabBarActiveTintColor: THEME.COLORS.PRIMARY,
+						tabBarStyle: {
+							paddingBottom: 10,
+							paddingTop: 10,
+							backgroundColor: THEME.COLORS.BLACK,
+							height: 70,
+							border: "none",
+						},
+						tabBarShowLabel: false,
 						tabBarIcon: ({ focused, color, size }) => {
 							return (
 								<FontAwesome5
@@ -71,22 +99,37 @@ export default function App() {
 								/>
 							)
 						},
-						tabBarInactiveTintColor: THEME.COLORS.GRAY,
-						tabBarActiveTintColor: THEME.COLORS.PRIMARY,
-						tabBarStyle: {
-							paddingBottom: 10,
-							paddingTop: 10,
-							backgroundColor: THEME.COLORS.BLACK,
-							height: 70,
-						},
-						tabBarShowLabel: false,
 					})}
 				>
-					<Tab.Screen name="Home" component={Home} />
-					<Tab.Screen name="User" component={User} />
-					<Tab.Screen name="NewTrip" component={NewTrip} />
-					<Tab.Screen name="Cash" component={Cash} />
-					<Tab.Screen name="Calculator" component={Calculator} />
+					<Tab.Screen
+						name="Home"
+						component={Home}
+						options={{
+							headerTitle: () => <Header />,
+						}}
+					/>
+					<Tab.Screen
+						name="User"
+						component={User}
+						options={{
+							headerTitle: () => <Header />,
+						}}
+					/>
+					<Tab.Screen
+						name="NewTrip"
+						component={NewTrip}
+						options={{ headerTitle: () => <Header /> }}
+					/>
+					<Tab.Screen
+						name="Cash"
+						component={Cash}
+						options={{ headerTitle: () => <Header /> }}
+					/>
+					<Tab.Screen
+						name="Calculator"
+						component={Calculator}
+						options={{ headerTitle: () => <Header /> }}
+					/>
 				</Tab.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>

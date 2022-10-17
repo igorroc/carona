@@ -1,22 +1,29 @@
 export default {
 	COLORS: {
 		PRIMARY: "#0DC29C",
-		PRIMARYDARK: "007259",
+		PRIMARYDARK: "#007259",
 		SECONDARY: "#4ACF67",
 		ERROR: "#BD4A4A",
 		SUCCESS: "#00B28C",
 		WARNING: "#F5A623",
 		INFO: "#2F95DC",
 		WHITE: "#FFF",
+		WHITE50: "#FFF8",
 		BLACK: "#151414",
 		GRAY: "#767575",
+		BACKGROUND: "#1E1E1E",
+		TEXT: "#FFF",
+		BORDER: "#E5E5E5",
+		NOTIFICATION: "#F3F3F3",
 		TRANSPARENT: "transparent",
 	},
 	FONTS: {
-		LIGHT: "Roboto_300Light",
-		REGULAR: "Roboto_400Regular",
-		MEDIUM: "Roboto_500Medium",
-		BOLD: "Roboto_700Bold",
+		EXTRALIGHT: "Mitr_200ExtraLight",
+		LIGHT: "Mitr_300Light",
+		REGULAR: "Mitr_400Regular",
+		MEDIUM: "Mitr_500Medium",
+		SEMIBOLD: "Mitr_600SemiBold",
+		BOLD: "Mitr_700Bold",
 	},
 	FONTSIZES: {
 		H1: 38,
@@ -30,5 +37,5 @@ export default {
 	},
 	SIZES: {
 		BASE: 16,
-	}
+	},
 }

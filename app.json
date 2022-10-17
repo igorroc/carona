@@ -1,33 +1,39 @@
 {
-  "expo": {
-    "name": "Caroninha",
-    "slug": "carona",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#1E1E1E"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#00A884"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+	"expo": {
+		"name": "Caroninha",
+		"slug": "caroninha",
+		"githubUrl": "https://github.com/igorroc/carona",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "dark-mode",
+		"backgroundColor": "#1e1e1e",
+		"primaryColor": "#0DC29C",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#1E1E1E"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#00A884"
+			},
+			"backgroundColor": "#1E1E1E"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"androidStatusBar": {
+			"barStyle": "dark-content",
+			"backgroundColor": "#00A884"
+		}
+	}
 }

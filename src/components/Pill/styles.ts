@@ -12,7 +12,8 @@ export const Wrapper = styled.View`
 
 export const Name = styled.Text`
 	color: ${({ theme }) => theme.COLORS.WHITE};
-	font-weight: bold;
+	/* font-weight: bold; */
+	font-family: ${({ theme }) => theme.FONTS.REGULAR};
 	font-size: ${({ theme }) => theme.FONTSIZES.H7}px;
 	word-wrap: normal;
 	word-break: keep-all;
