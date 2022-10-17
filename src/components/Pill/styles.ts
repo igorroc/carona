@@ -14,7 +14,7 @@ export const Name = styled.Text`
 	color: ${({ theme }) => theme.COLORS.WHITE};
 	/* font-weight: bold; */
 	font-family: ${({ theme }) => theme.FONTS.REGULAR};
-	font-size: ${({ theme }) => theme.FONTSIZES.H7}px;
+	font-size: ${({ theme }) => theme.FONTSIZES.H6}px;
 	word-wrap: normal;
 	word-break: keep-all;
 	flex: 1;
@@ -22,6 +22,6 @@ export const Name = styled.Text`
 `
 
 export const Avatar = styled.Image`
-	width: ${({ theme }) => theme.SIZES.BASE * 3}px;
-	height: ${({ theme }) => theme.SIZES.BASE * 3}px;
+	width: ${({ theme }) => theme.SIZES.BASE * 3.3}px;
+	height: ${({ theme }) => theme.SIZES.BASE * 3.3}px;
 `
