@@ -5,6 +5,7 @@ import Theme from "../../theme"
 export const Wrapper = styled.View`
 	background-color: ${Theme.COLORS.PRIMARY};
 	flex: 1;
+	margin: 0 20px;
 `
 
 export const Name = styled.Text`

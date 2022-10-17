@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient"
 import React from "react"
 import { useTheme } from "styled-components"
 
@@ -9,12 +10,14 @@ interface DestaqueProps {
 }
 
 export function DestaqueCard(props: DestaqueProps) {
-    const theme = useTheme()
+	const theme = useTheme()
 
 	return (
-		<Wrapper>
-			<Name theme={theme}>{props.name}</Name>
-			<Description>{props.description}</Description>
-		</Wrapper>
+		<LinearGradient colors={[theme.COLORS.BLACK2, theme.COLORS.BLACK3]}>
+			<Wrapper>
+				<Name theme={theme}>{props.name}</Name>
+				<Description>{props.description}</Description>
+			</Wrapper>
+		</LinearGradient>
 	)
 }

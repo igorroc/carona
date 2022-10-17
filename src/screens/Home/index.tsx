@@ -16,8 +16,6 @@ export function Home() {
 
 	return (
 		<MaxWidthWrapper>
-			<Division />
-
 			<MainInfo>
 				<Image
 					source={car}

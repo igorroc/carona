@@ -6,8 +6,7 @@ export const Wrapper = styled.View`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 20px;
-	height: 400px;
+	max-height: 200px;
 `
 
 export const Sub = styled.Text`
