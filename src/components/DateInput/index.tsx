@@ -14,13 +14,14 @@ export function DateInput() {
 	function changeDate(event: any, selectedDate: any) {
 		const currentDate = selectedDate
 		setDate(currentDate)
-		console.log(currentDate)
 	}
 
 	function showDatePicker() {
 		DateTimePickerAndroid.open({
 			value: date,
 			onChange: changeDate,
+			positiveButtonLabel: "Ok",
+			negativeButtonLabel: "Voltar",
 		})
 	}
 
