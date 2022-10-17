@@ -19,7 +19,6 @@ export function Calculator() {
 	}
 
 	async function handleInputDistBase(text: string) {
-
 		const x = Number(text)
 		setDistBase(() => {
 			calculate(Number(dist), x, Number(valueBase))
@@ -50,7 +49,7 @@ export function Calculator() {
 
 	return (
 		<MaxWidthWrapper>
-			<ScrollView>
+			<ScrollView showsVerticalScrollIndicator={false}>
 				<View
 					style={{
 						marginBottom: 20,
