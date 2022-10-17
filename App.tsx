@@ -7,7 +7,7 @@ import {
 	Mitr_400Regular,
 	Mitr_500Medium,
 	Mitr_600SemiBold,
-	Mitr_700Bold,
+	Mitr_700Bold
 } from "@expo-google-fonts/mitr"
 import { View } from "react-native"
 import { FontAwesome5 } from "@expo/vector-icons"
@@ -29,20 +29,20 @@ const Tab = createBottomTabNavigator()
 
 const Tabs = {
 	Home: {
-		activeIcon: "home",
+		activeIcon: "home"
 	},
 	User: {
-		activeIcon: "user-alt",
+		activeIcon: "user-alt"
 	},
 	NewTrip: {
-		activeIcon: "plus",
+		activeIcon: "plus"
 	},
 	Cash: {
-		activeIcon: "dollar-sign",
+		activeIcon: "dollar-sign"
 	},
 	Calculator: {
-		activeIcon: "calculator",
-	},
+		activeIcon: "calculator"
+	}
 }
 
 export default function App() {
@@ -52,7 +52,7 @@ export default function App() {
 		Mitr_400Regular,
 		Mitr_500Medium,
 		Mitr_600SemiBold,
-		Mitr_700Bold,
+		Mitr_700Bold
 	})
 
 	if (!fontsLoaded) {
@@ -70,8 +70,8 @@ export default function App() {
 						card: THEME.COLORS.BACKGROUND,
 						text: THEME.COLORS.TEXT,
 						border: THEME.COLORS.BORDER,
-						notification: THEME.COLORS.NOTIFICATION,
-					},
+						notification: THEME.COLORS.NOTIFICATION
+					}
 				}}
 			>
 				<Tab.Navigator
@@ -81,7 +81,7 @@ export default function App() {
 							borderBottomWidth: 0,
 							borderBottomColor: "transparent",
 							shadowColor: "transparent",
-							height: 200,
+							height: 200
 						},
 						tabBarInactiveTintColor: THEME.COLORS.GRAY,
 						tabBarActiveTintColor: THEME.COLORS.PRIMARY,
@@ -92,7 +92,7 @@ export default function App() {
 							height: 70,
 							borderTopWidth: 0,
 							borderTopColor: "transparent",
-							shadowColor: "transparent",
+							shadowColor: "transparent"
 						},
 						tabBarShowLabel: false,
 						tabBarIcon: ({ focused, color, size }) => {
@@ -107,7 +107,7 @@ export default function App() {
 											borderRadius: 10,
 											justifyContent: "center",
 											alignItems: "center",
-											marginBottom: 80,
+											marginBottom: 80
 										}}
 									>
 										<FontAwesome5
@@ -126,21 +126,21 @@ export default function App() {
 									color={color}
 								/>
 							)
-						},
+						}
 					})}
 				>
 					<Tab.Screen
 						name="Home"
 						component={Home}
 						options={{
-							headerTitle: () => <Header />,
+							headerTitle: () => <Header />
 						}}
 					/>
 					<Tab.Screen
 						name="User"
 						component={User}
 						options={{
-							headerTitle: () => <Header />,
+							headerTitle: () => <Header />
 						}}
 					/>
 					<Tab.Screen
