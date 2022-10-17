@@ -1,4 +1,5 @@
 import React from "react"
+
 import {
 	useFonts,
 	Mitr_200ExtraLight,
@@ -8,6 +9,7 @@ import {
 	Mitr_600SemiBold,
 	Mitr_700Bold,
 } from "@expo-google-fonts/mitr"
+import { View } from "react-native"
 import { FontAwesome5 } from "@expo/vector-icons"
 import { ThemeProvider } from "styled-components/native"
 import { NavigationContainer } from "@react-navigation/native"
@@ -20,8 +22,8 @@ import { NewTrip } from "./src/screens/NewTrip"
 import { User } from "./src/screens/User"
 import { Cash } from "./src/screens/Cash"
 import { Calculator } from "./src/screens/Calculator"
+
 import { Header } from "./src/components/Header"
-import { View } from "react-native"
 
 const Tab = createBottomTabNavigator()
 
@@ -116,9 +118,10 @@ export default function App() {
 									</View>
 								)
 							}
+							let index = route.name
 							return (
 								<FontAwesome5
-									name={Tabs[route.name].activeIcon}
+									name={Tabs[index].activeIcon}
 									size={size}
 									color={color}
 								/>
