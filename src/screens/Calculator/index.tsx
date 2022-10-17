@@ -8,14 +8,44 @@ import { TextInput } from "../../components/TextInput"
 
 export function Calculator() {
 	const Theme = useTheme()
-	const [distBase, setDistBase] = React.useState(18)
-	const [dist, setDist] = React.useState(28)
-	const [valueBase, setValueBase] = React.useState(3)
-	const [result, setResult] = React.useState(4.67)
+	const [distBase, setDistBase] = React.useState("18")
+	const [dist, setDist] = React.useState("28")
+	const [valueBase, setValueBase] = React.useState("3")
+	const [result, setResult] = React.useState("4.67")
 
-	function calculate() {
+	function calculate(dist: number, distBase: number, valueBase: number) {
 		const x = (dist / distBase) * valueBase
-		setResult(x)
+		setResult(x.toString())
+	}
+
+	async function handleInputDistBase(text: string) {
+
+		const x = Number(text)
+		setDistBase(() => {
+			calculate(Number(dist), x, Number(valueBase))
+			return text
+		})
+	}
+
+	async function handleInputDist(text: string) {
+		const x = Number(text)
+		setDist(() => {
+			calculate(x, Number(distBase), Number(valueBase))
+			return text
+		})
+	}
+
+	async function handleInputValueBase(text: string) {
+		const x = Number(text)
+		setValueBase(() => {
+			calculate(Number(dist), Number(distBase), x)
+			return text
+		})
+	}
+
+	function handleDot(text: string) {
+		const x = text.replaceAll(",", ".")
+		return x
 	}
 
 	return (
@@ -38,7 +68,7 @@ export function Calculator() {
 							placeholder="18"
 							value={distBase.toString()}
 							keyboardType="numeric"
-							onChangeText={setDistBase}
+							onChangeText={handleInputDistBase}
 						/>
 					</View>
 				</View>
@@ -59,7 +89,7 @@ export function Calculator() {
 							placeholder="3"
 							value={valueBase.toString()}
 							keyboardType="numeric"
-							onChangeText={setValueBase}
+							onChangeText={handleInputValueBase}
 						/>
 					</View>
 				</View>
@@ -80,7 +110,7 @@ export function Calculator() {
 							placeholder="28"
 							value={dist.toString()}
 							keyboardType="numeric"
-							onChangeText={setDist}
+							onChangeText={handleInputDist}
 						/>
 					</View>
 				</View>
@@ -99,10 +129,7 @@ export function Calculator() {
 						}}
 					>
 						<TextInput
-							value={result.toLocaleString("pt-BR", {
-								style: "currency",
-								currency: "BRL",
-							})}
+							value={"R$ " + Number(result).toFixed(2)}
 							keyboardType="numeric"
 							style={{
 								textAlign: "center",
