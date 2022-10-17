@@ -1,17 +1,28 @@
 import styled from "styled-components/native"
 
-import Theme from "../../theme"
+export const Flex = styled.View`
+	margin: 0 10px;
+`
+
+export const TopWrapper = styled.View`
+	height: 100%;
+	justify-content: center;
+	/* align-items: center; */
+`
 
 export const Wrapper = styled.View`
-	background-color: ${Theme.COLORS.PRIMARY};
-	flex: 1;
-	margin: 0 20px;
+	margin: 20px;
+	justify-content: center;
 `
 
 export const Name = styled.Text`
-	font-family: ${Theme.FONTS.SEMIBOLD};
-	font-size: ${Theme.FONTSIZES.H8}px;
-	color: ${Theme.COLORS.WHITE};
+	font-family: ${({ theme }) => theme.FONTS.SEMIBOLD};
+	font-size: ${({ theme }) => theme.FONTSIZES.H8}px;
+	color: ${({ theme }) => theme.COLORS.WHITE};
 `
 
-export const Description = styled.Text``
+export const Description = styled.Text`
+	font-family: ${({ theme }) => theme.FONTS.REGULAR};
+	font-size: ${({ theme }) => theme.FONTSIZES.H8}px;
+	color: ${({ theme }) => theme.COLORS.WHITE};
+`
