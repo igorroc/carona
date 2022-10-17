@@ -88,7 +88,9 @@ export default function App() {
 							paddingTop: 10,
 							backgroundColor: THEME.COLORS.BLACK,
 							height: 70,
-							border: "none",
+							borderTopWidth: 0,
+							borderTopColor: "transparent",
+							shadowColor: "transparent",
 						},
 						tabBarShowLabel: false,
 						tabBarIcon: ({ focused, color, size }) => {
