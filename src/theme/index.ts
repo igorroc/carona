@@ -14,6 +14,7 @@ export default {
 		BLACK2: "#3F3F3F",
 		BLACK3: "#323232",
 		GRAY: "#767575",
+		DARKGRAY: "#303030",
 		BACKGROUND: "#1E1E1E",
 		TEXT: "#FFF",
 		BORDER: "#E5E5E5",

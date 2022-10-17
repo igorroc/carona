@@ -1,11 +1,9 @@
 import React from "react"
 
-import { View } from "react-native"
-
 import { Input } from "./styles"
 
 interface InputProps {
-	placeholder: string
+	placeholder?: string
 	style?: object
 	keyboardType?:
 		| "default"
@@ -15,6 +13,9 @@ interface InputProps {
 		| "email-address"
 		| "phone-pad"
 	autoComplete?: string
+	value?: string
+	editable?: boolean
+	onChangeText?: Function | Array<Function>
 }
 
 export function TextInput(props: InputProps) {
@@ -24,6 +25,9 @@ export function TextInput(props: InputProps) {
 			style={props.style}
 			keyboardType={props.keyboardType}
 			autoComplete={props.autoComplete}
-		></Input>
+			value={props.value}
+			editable={props.editable}
+			onChangeText={props.onChangeText}
+		/>
 	)
 }
