@@ -23,7 +23,7 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
+				"foregroundImage": "./assets/favicon.png",
 				"backgroundColor": "#00A884"
 			},
 			"backgroundColor": "#1E1E1E",
@@ -36,7 +36,7 @@
 			"barStyle": "dark-content",
 			"backgroundColor": "#00A884"
 		},
-		"androidNavigationBar":{
+		"androidNavigationBar": {
 			"barStyle": "dark-content",
 			"backgroundColor": "#151414"
 		}
