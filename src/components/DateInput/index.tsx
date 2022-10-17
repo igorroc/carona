@@ -7,13 +7,18 @@ import { Input } from "./styles"
 import { FontAwesome5 } from "@expo/vector-icons"
 import { useTheme } from "styled-components"
 
-export function DateInput() {
+interface DateInputProps {
+	onChangeDate: React.Dispatch<React.SetStateAction<Date>>
+}
+
+export function DateInput(props: DateInputProps) {
 	const theme = useTheme()
 	const [date, setDate] = React.useState(new Date())
 
 	function changeDate(event: any, selectedDate: any) {
 		const currentDate = selectedDate
 		setDate(currentDate)
+		props.onChangeDate(currentDate)
 	}
 
 	function showDatePicker() {
