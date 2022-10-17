@@ -15,7 +15,7 @@ export function SectionTitle(props: TitleProps) {
 				fontSize: theme.FONTSIZES.H5,
 				color: theme.COLORS.WHITE,
 				fontFamily: theme.FONTS.SEMIBOLD,
-				marginBottom: 20,
+				marginBottom: 5,
 			}}
 		>
 			{props.children}

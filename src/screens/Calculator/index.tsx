@@ -1,6 +1,6 @@
 import React from "react"
 
-import { ScrollView, Text, View } from "react-native"
+import { Dimensions, ScrollView, Text, View } from "react-native"
 import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { SectionTitle } from "../../components/SectionTitle"
@@ -8,8 +8,10 @@ import { TextInput } from "../../components/TextInput"
 
 export function Calculator() {
 	const Theme = useTheme()
+	const height = Dimensions.get('window').height;
+
 	const [distBase, setDistBase] = React.useState("18")
-	const [dist, setDist] = React.useState("28")
+	const [dist, setDist] = React.useState("")
 	const [valueBase, setValueBase] = React.useState("3")
 	const [result, setResult] = React.useState("4.67")
 
@@ -49,7 +51,12 @@ export function Calculator() {
 
 	return (
 		<MaxWidthWrapper>
-			<ScrollView showsVerticalScrollIndicator={false}>
+			<ScrollView
+				showsVerticalScrollIndicator={false}
+				style={{
+					maxHeight: height - 270,
+				}}
+			>
 				<View
 					style={{
 						marginBottom: 20,
@@ -60,7 +67,7 @@ export function Calculator() {
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 10,
+							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -81,7 +88,7 @@ export function Calculator() {
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 10,
+							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -102,7 +109,7 @@ export function Calculator() {
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 10,
+							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -124,7 +131,7 @@ export function Calculator() {
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 10,
+							marginTop: 5,
 						}}
 					>
 						<TextInput

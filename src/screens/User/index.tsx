@@ -1,6 +1,6 @@
 import React from "react"
 
-import { View, Text, ScrollView } from "react-native"
+import { View, Text, ScrollView, Dimensions } from "react-native"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { SectionTitle } from "../../components/SectionTitle"
 import { ItemProps, TableItem } from "../../components/TableItem"
@@ -61,6 +61,7 @@ const userList = [
 ] as Array<ItemProps>
 
 export function User() {
+	const height = Dimensions.get('window').height;
 	return (
 		<MaxWidthWrapper>
 			<View
@@ -94,6 +95,7 @@ export function User() {
 						flex: 1,
 						width: "100%",
 						height: 200,
+						maxHeight: height-400,
 					}}
 				>
 					{userList.map((user, index) => (

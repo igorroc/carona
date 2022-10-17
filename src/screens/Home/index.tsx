@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Image, ScrollView, Text, View } from "react-native"
+import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import { Division } from "../../components/Division"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { Pill } from "../../components/Pill"
@@ -13,10 +13,13 @@ import { DestaqueCard } from "../../components/DestaqueCard"
 
 export function Home() {
 	const theme = useTheme()
+	const height = Dimensions.get('window').height;
 
 	return (
 		<MaxWidthWrapper>
-			<ScrollView showsVerticalScrollIndicator={false}>
+			<ScrollView showsVerticalScrollIndicator={false} style={{
+				maxHeight: height - 270,
+			}}>
 				<MainInfo>
 					<Image
 						source={car}
