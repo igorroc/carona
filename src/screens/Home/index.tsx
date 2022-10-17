@@ -18,7 +18,7 @@ export function Home() {
 	return (
 		<MaxWidthWrapper>
 			<ScrollView showsVerticalScrollIndicator={false} style={{
-				maxHeight: height - 270,
+				maxHeight: height - 320,
 			}}>
 				<MainInfo>
 					<Image
