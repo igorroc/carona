@@ -21,6 +21,7 @@ import { User } from "./src/screens/User"
 import { Cash } from "./src/screens/Cash"
 import { Calculator } from "./src/screens/Calculator"
 import { Header } from "./src/components/Header"
+import { View } from "react-native"
 
 const Tab = createBottomTabNavigator()
 
@@ -91,6 +92,28 @@ export default function App() {
 						},
 						tabBarShowLabel: false,
 						tabBarIcon: ({ focused, color, size }) => {
+							if (route.name === "NewTrip") {
+								return (
+									<View
+										style={{
+											backgroundColor:
+												THEME.COLORS.PRIMARY,
+											width: 60,
+											height: 60,
+											borderRadius: 10,
+											justifyContent: "center",
+											alignItems: "center",
+											marginBottom: 80,
+										}}
+									>
+										<FontAwesome5
+											name={Tabs[route.name].activeIcon}
+											size={size * 1.2}
+											color={THEME.COLORS.WHITE}
+										/>
+									</View>
+								)
+							}
 							return (
 								<FontAwesome5
 									name={Tabs[route.name].activeIcon}
