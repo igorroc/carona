@@ -15,5 +15,6 @@ web-build/
 
 package-lock.json
 googleEnv.json
+googleSheetAPI.json
 
 .env
