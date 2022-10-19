@@ -21,7 +21,7 @@ export function Home() {
 				showsVerticalScrollIndicator={false}
 				style={{
 					maxHeight: height - 320,
-					flex: 1
+					flex: 1,
 				}}
 			>
 				<MainInfo>
@@ -30,7 +30,7 @@ export function Home() {
 						style={{
 							width: 60,
 							height: 60,
-							marginRight: 10
+							marginRight: 10,
 						}}
 					/>
 					<View>
@@ -38,7 +38,7 @@ export function Home() {
 							style={{
 								fontSize: theme.FONTSIZES.H5,
 								color: theme.COLORS.WHITE,
-								fontFamily: theme.FONTS.BOLD
+								fontFamily: theme.FONTS.BOLD,
 							}}
 						>
 							Viagens realizadas
@@ -47,7 +47,7 @@ export function Home() {
 							style={{
 								fontSize: theme.FONTSIZES.H7,
 								color: theme.COLORS.WHITE50,
-								fontFamily: theme.FONTS.MEDIUM
+								fontFamily: theme.FONTS.MEDIUM,
 							}}
 						>
 							658
@@ -57,7 +57,7 @@ export function Home() {
 				<View
 					style={{
 						justifyContent: "center",
-						marginVertical: 80
+						marginVertical: 80,
 					}}
 				>
 					<SectionTitle>Destaques</SectionTitle>
@@ -94,7 +94,7 @@ export function Home() {
 				</View>
 				<View
 					style={{
-						justifyContent: "center"
+						justifyContent: "center",
 					}}
 				>
 					<SectionTitle>Última Viagem</SectionTitle>
