@@ -9,6 +9,7 @@
 		"userInterfaceStyle": "dark",
 		"backgroundColor": "#1e1e1e",
 		"primaryColor": "#0DC29C",
+		"scheme": "redirectcaroninha",
 		"splash": {
 			"image": "./assets/splash.png",
 			"resizeMode": "contain",
@@ -39,6 +40,7 @@
 		"androidNavigationBar": {
 			"barStyle": "dark-content",
 			"backgroundColor": "#151414"
-		}
+		},
+		"sdkVersion": "46.0.0"
 	}
 }
