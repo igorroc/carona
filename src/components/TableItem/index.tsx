@@ -59,6 +59,7 @@ export function TableItem(props: ItemProps) {
 				}}
 			>
 				R$ {props.saldo.toFixed(2)}
+				{/* R$ {props.saldo} */}
 			</Text>
 
 			{/* After */}
