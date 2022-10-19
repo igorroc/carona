@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient"
 import React from "react"
 
 import { Dimensions, ScrollView, Text, View } from "react-native"
@@ -7,8 +8,8 @@ import { SectionTitle } from "../../components/SectionTitle"
 import { TextInput } from "../../components/TextInput"
 
 export function Calculator() {
-	const Theme = useTheme()
-	const height = Dimensions.get('window').height;
+	const theme = useTheme()
+	const height = Dimensions.get("window").height
 
 	const [distBase, setDistBase] = React.useState("18")
 	const [dist, setDist] = React.useState("")
@@ -134,17 +135,36 @@ export function Calculator() {
 							marginTop: 5,
 						}}
 					>
-						<TextInput
-							value={"R$ " + Number(result).toFixed(2)}
-							keyboardType="numeric"
+						<LinearGradient
+							colors={[
+								theme.COLORS.PRIMARY,
+								theme.COLORS.PRIMARYDARK,
+							]}
+							end={{ x: 1, y: 0 }}
+							start={{ x: 0, y: 0 }}
 							style={{
-								textAlign: "center",
-								backgroundColor: Theme.COLORS.PRIMARY,
-								fontSize: Theme.FONTSIZES.H2,
-								fontFamily: Theme.FONTS.BOLD,
+								flexDirection: "row",
+								alignItems: "center",
+								justifyContent: "center",
+								borderRadius: 10,
+								padding: 10,
+								paddingHorizontal: 20,
 							}}
-							editable={false}
-						/>
+						>
+							<Text
+								style={{
+									textAlign: "center",
+									fontSize: theme.FONTSIZES.H2,
+									fontFamily: theme.FONTS.BOLD,
+									// flex: 1,
+									flexGrow: 1,
+								}}
+							>
+								{!Number(result) || Number(result) < 0
+									? "Digite um valor válido"
+									: `R$ ${Number(result).toFixed(2)}`}
+							</Text>
+						</LinearGradient>
 					</View>
 				</View>
 			</ScrollView>
