@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
-import { View, Text, ScrollView, Dimensions } from "react-native"
+import { View, ScrollView, Dimensions, ActivityIndicator } from "react-native"
+import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { SectionTitle } from "../../components/SectionTitle"
 import { ItemProps, TableItem } from "../../components/TableItem"
 import { TextInput } from "../../components/TextInput"
+import DataAPI from "../../middlewares/googleSheet"
 import { Table, TableHeader, TableHeaderText } from "./styles"
 
 const userList = [
@@ -61,7 +63,28 @@ const userList = [
 ] as Array<ItemProps>
 
 export function User() {
-	const height = Dimensions.get('window').height;
+	const theme = useTheme()
+	const height = Dimensions.get("window").height
+	const [data, setData] = useState()
+	useEffect(() => {
+		DataAPI("Total").then((x) => {
+			setData(x)
+		})
+	}, [])
+
+	if (!data) {
+		return (
+			<ActivityIndicator
+				size="large"
+				animating={true}
+				color={theme.COLORS.PRIMARY}
+				style={{
+					flex: 1,
+				}}
+			/>
+		)
+	}
+
 	return (
 		<MaxWidthWrapper>
 			<View
@@ -95,7 +118,7 @@ export function User() {
 						flex: 1,
 						width: "100%",
 						height: 200,
-						maxHeight: height-400,
+						maxHeight: height - 400,
 					}}
 				>
 					{userList.map((user, index) => (
