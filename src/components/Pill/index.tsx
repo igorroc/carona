@@ -19,7 +19,7 @@ interface PillProps {
 export function Pill(props: PillProps) {
 	return (
 		<LinearGradient
-			colors={["#3F3F3F", "#313131"]}
+			colors={["#E3E3E330", "#AEAEAE30"]}
 			style={{
 				borderRadius: 100,
 				maxHeight: 60,
