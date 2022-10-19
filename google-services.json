@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "273978405944",
+    "project_id": "caroninha-ff0b8",
+    "storage_bucket": "caroninha-ff0b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273978405944:android:9e23eb5c6ba4d746bce2cd",
+        "android_client_info": {
+          "package_name": "com.igorroc.caroninha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273978405944-s03q0suvoi3cmok02t8l9ecoljjf6v99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.igorroc.caroninha",
+            "certificate_hash": "37a096f40ca56404e0e66c4f4fd33523c07d20cd"
+          }
+        },
+        {
+          "client_id": "273978405944-5ti3jb4aq9nmken8e19s4e13jige01ga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD04i3fjROkM28M9YKb7-uuDF1tI5Zxqv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273978405944-5ti3jb4aq9nmken8e19s4e13jige01ga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

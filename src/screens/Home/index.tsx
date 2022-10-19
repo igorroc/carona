@@ -20,7 +20,7 @@ export function Home() {
 			<ScrollView
 				showsVerticalScrollIndicator={false}
 				style={{
-					maxHeight: height - 320,
+					maxHeight: height - 310,
 					flex: 1,
 				}}
 			>
@@ -112,7 +112,13 @@ export function Home() {
 				<View>
 					<SectionTitle>Planilha</SectionTitle>
 					<LinkButton url="https://docs.google.com/spreadsheets/d/1XxK_0arRVIOYiK1L4MyT9hODgO-sm8IjEfk8tgGW4QE/edit?usp=sharing">
-						<Pill avatar="link" name="Link" />
+						<Pill
+							avatar="link"
+							name="Link"
+							style={{
+								maxWidth: 150,
+							}}
+						/>
 					</LinkButton>
 				</View>
 			</ScrollView>

@@ -1,9 +1,12 @@
 import React from "react"
 
+import { TouchableOpacity } from "react-native"
+
 import { LinearGradient } from "expo-linear-gradient"
 
 import { Avatar, Name, Wrapper } from "./styles"
 import { user } from "../Avatar"
+import { StyledProps } from "styled-components"
 
 interface PillProps {
 	name: string
@@ -15,6 +18,8 @@ interface PillProps {
 		| "whiteManHat"
 		| "whiteWoman"
 		| "link"
+
+	style?: StyledProps<any>
 }
 
 export function Pill(props: PillProps) {
@@ -28,6 +33,7 @@ export function Pill(props: PillProps) {
 				maxHeight: 60,
 				margin: 10,
 				paddingRight: 10,
+				...props.style,
 			}}
 		>
 			<Wrapper>

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react"
 
-import { Alert, Linking, Button, TouchableHighlight, TouchableOpacity } from "react-native"
+import { Linking, TouchableOpacity } from "react-native"
 
 // import { styles } from "./styles"
 
@@ -11,9 +11,12 @@ interface LinkProps {
 
 export function LinkButton(props: LinkProps) {
 	const handlePress = useCallback(async () => {
-		
-		await Linking.openURL(props.url)
-		
+		try {
+			await Linking.openURL(props.url)
+		} catch (error) {
+			console.log(error)
+		}
+
 		// Checking if the link is supported for links with custom URL scheme.
 		// const supported = await Linking.canOpenURL(props.url)
 		// if (supported) {
@@ -26,7 +29,13 @@ export function LinkButton(props: LinkProps) {
 	}, [props.url])
 
 	return (
-		<TouchableOpacity onPress={handlePress}>
+		<TouchableOpacity
+			onPress={handlePress}
+			style={{
+				flex: 1,
+				alignSelf: "flex-start",
+			}}
+		>
 			{props.children}
 		</TouchableOpacity>
 	)
