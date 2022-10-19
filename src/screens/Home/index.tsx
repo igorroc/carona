@@ -1,7 +1,6 @@
 import React from "react"
 
 import { Dimensions, Image, ScrollView, Text, View } from "react-native"
-import { Division } from "../../components/Division"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { Pill } from "../../components/Pill"
 import { SectionTitle } from "../../components/SectionTitle"
@@ -10,6 +9,7 @@ import car from "../../assets/icon/car.png"
 import { MainInfo } from "../../components/MainInfo"
 import { useTheme } from "styled-components"
 import { DestaqueCard } from "../../components/DestaqueCard"
+import { LinkButton } from "../../components/LinkButton"
 
 export function Home() {
 	const theme = useTheme()
@@ -57,7 +57,7 @@ export function Home() {
 				<View
 					style={{
 						justifyContent: "center",
-						marginVertical: 80,
+						marginBottom: 40,
 					}}
 				>
 					<SectionTitle>Destaques</SectionTitle>
@@ -95,6 +95,7 @@ export function Home() {
 				<View
 					style={{
 						justifyContent: "center",
+						marginBottom: 40,
 					}}
 				>
 					<SectionTitle>Última Viagem</SectionTitle>
@@ -107,6 +108,12 @@ export function Home() {
 						<Pill name="Michelle Brito" avatar="whiteWoman" />
 						<Pill name="Nicole Rocha" avatar="blackWomanNeutral" />
 					</ScrollView>
+				</View>
+				<View>
+					<SectionTitle>Planilha</SectionTitle>
+					<LinkButton url="https://docs.google.com/spreadsheets/d/1XxK_0arRVIOYiK1L4MyT9hODgO-sm8IjEfk8tgGW4QE/edit?usp=sharing">
+						<Pill avatar="link" name="Link" />
+					</LinkButton>
 				</View>
 			</ScrollView>
 		</MaxWidthWrapper>
