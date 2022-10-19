@@ -21,10 +21,12 @@ export function Pill(props: PillProps) {
 		<LinearGradient
 			colors={["#E3E3E330", "#AEAEAE30"]}
 			style={{
+				flex: 1,
+				alignSelf: "flex-start",
 				borderRadius: 100,
 				maxHeight: 60,
-				maxWidth: 300,
 				margin: 10,
+				paddingRight: 10,
 			}}
 		>
 			<Wrapper>
