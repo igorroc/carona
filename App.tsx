@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Text, TouchableOpacity, Button, Image, View } from "react-native"
+import { Text, View, ActivityIndicator } from "react-native"
 
 import {
 	useFonts,
@@ -18,7 +18,6 @@ import { TabRoutes } from "./src/routes/tab.routes"
 
 import * as Google from "expo-auth-session/providers/google"
 import * as WebBrowser from "expo-web-browser"
-import { user } from "./src/components/Avatar"
 import { GoogleLoginButton } from "./src/components/GoogleLoginButton"
 
 WebBrowser.maybeCompleteAuthSession()
@@ -84,7 +83,7 @@ export default function App() {
 				>
 					<GoogleLoginButton
 						onPress={async () => {
-							await promptAsync({ showInRecents: true })
+							await promptAsync()
 						}}
 					/>
 				</View>
@@ -95,10 +94,12 @@ export default function App() {
 	function Validate() {
 		if (!isValid) {
 			getUserInfo()
+			console.log("Logged in as " + userInfo.email)
 			if (authenticatedUsers.includes(userInfo.email)) {
 				setIsValid(true)
 			}
 		}
+
 		return (
 			<ThemeProvider theme={THEME}>
 				<View
@@ -108,34 +109,48 @@ export default function App() {
 						alignItems: "center",
 					}}
 				>
-					<Text
-						style={{
-							fontSize: THEME.FONTSIZES.H6,
-							marginBottom: 10,
-							color: THEME.COLORS.WHITE,
-							flexDirection: "column",
-						}}
-					>
-						Usuário{" "}
-						<Text style={{ backgroundColor: "#27382da0" }}>
-							{userInfo.email}
-						</Text>{" "}
-						não autorizado
-					</Text>
-					<Text
-						style={{
-							fontSize: THEME.FONTSIZES.H6,
-							marginBottom: 10,
-							color: THEME.COLORS.WHITE,
-						}}
-					>
-						Faça login novamente
-					</Text>
-					<GoogleLoginButton
-						onPress={async () => {
-							await promptAsync({ showInRecents: true })
-						}}
-					/>
+					{!userInfo.email ? (
+						<ActivityIndicator
+							size="large"
+							color={THEME.COLORS.PRIMARY}
+						/>
+					) : (
+						<>
+							<Text
+								style={{
+									fontSize: THEME.FONTSIZES.H6,
+									marginBottom: 10,
+									color: THEME.COLORS.WHITE,
+									flexDirection: "column",
+								}}
+							>
+								Usuário{" "}
+								<Text
+									style={{
+										backgroundColor: "#27382da0",
+										flex: 1,
+									}}
+								>
+									{userInfo.email}
+								</Text>{" "}
+								não autorizado
+							</Text>
+							<Text
+								style={{
+									fontSize: THEME.FONTSIZES.H6,
+									marginBottom: 10,
+									color: THEME.COLORS.WHITE,
+								}}
+							>
+								Faça login novamente
+							</Text>
+							<GoogleLoginButton
+								onPress={async () => {
+									await promptAsync()
+								}}
+							/>
+						</>
+					)}
 				</View>
 			</ThemeProvider>
 		)
