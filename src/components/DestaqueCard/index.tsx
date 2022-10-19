@@ -21,26 +21,17 @@ export function DestaqueCard(props: DestaqueProps) {
 				colors={["#36473D30", "#22342A30"]}
 				end={{ x: 0, y: 1 }}
 				style={{
-					// flex: 1,
-					// height: 100,
-					borderRadius: 10,
+					borderRadius: 30,
 					borderWidth: 1,
-					borderColor: "#fff3",
+					borderColor: "#575757",
 				}}
 			>
 				<Wrapper>
-					<IconWrapper
-					>
+					<IconWrapper>
 						<FontAwesome5
 							name={props.icon}
 							size={20}
 							color={theme.COLORS.PRIMARY}
-							style={{
-								width: 20,
-								height: 20,
-								alignItens: "center",
-								justifyContent: "center",
-							}}
 						/>
 					</IconWrapper>
 

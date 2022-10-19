@@ -8,7 +8,8 @@ export const IconWrapper = styled.View`
 	align-self: flex-start;
 	justify-content: center;
 	align-items: center;
-	background-color: #fff3;
+	min-width: 60px;
+	background-color: #343734;
 	padding: 20px;
 	border-radius: 10px;
 `
