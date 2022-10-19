@@ -19,6 +19,7 @@ export function MainInfo(props: InfoProps) {
 			style={{
 				borderRadius: 30,
 				position: "relative",
+				paddingVertical: 10,
 			}}
 		>
 			<MainInfoContainer>{props.children}</MainInfoContainer>
