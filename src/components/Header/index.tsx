@@ -1,12 +1,7 @@
 import { FontAwesome5 } from "@expo/vector-icons"
 import React from "react"
 
-import {
-	Text,
-	TouchableHighlight,
-	TouchableWithoutFeedback,
-	View,
-} from "react-native"
+import { Text, TouchableOpacity, View } from "react-native"
 import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../MaxWidthWrapper"
 
@@ -15,7 +10,7 @@ import { Wrapper, Sub, Title, Saldo } from "./styles"
 export function Header() {
 	const [showSaldo, setShowSaldo] = React.useState(false)
 	const theme = useTheme()
-	let saldo = "R$ 125,00"
+	let saldo = "R$ 9.999,00"
 
 	function handleClick() {
 		setShowSaldo(!showSaldo)
@@ -28,12 +23,8 @@ export function Header() {
 					<Sub>Olá, Igor!</Sub>
 					<Title>Caroninha</Title>
 				</View>
-				<TouchableWithoutFeedback onPress={handleClick}>
-					<Saldo
-						onPress={() => {
-							console.log("click")
-						}}
-					>
+				<TouchableOpacity onPress={handleClick}>
+					<Saldo>
 						<Sub
 							style={{
 								color: showSaldo
@@ -49,7 +40,6 @@ export function Header() {
 									style={{
 										flexDirection: "row",
 										alignItems: "center",
-										marginTop: 50,
 									}}
 								>
 									<FontAwesome5
@@ -78,7 +68,6 @@ export function Header() {
 									style={{
 										flexDirection: "row",
 										alignItems: "center",
-										marginTop: 50,
 									}}
 								>
 									<FontAwesome5
@@ -99,7 +88,7 @@ export function Header() {
 							)}
 						</Title>
 					</Saldo>
-				</TouchableWithoutFeedback>
+				</TouchableOpacity>
 			</Wrapper>
 		</MaxWidthWrapper>
 	)
