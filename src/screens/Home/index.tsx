@@ -28,20 +28,20 @@ export function Home() {
 					<Image
 						source={car}
 						style={{
-							width: 60,
-							height: 60,
+							width: 80,
+							height: 80,
 							marginRight: 10,
 						}}
 					/>
 					<View>
 						<Text
 							style={{
-								fontSize: theme.FONTSIZES.H5,
+								fontSize: theme.FONTSIZES.H3,
 								color: theme.COLORS.WHITE,
 								fontFamily: theme.FONTS.BOLD,
 							}}
 						>
-							Viagens realizadas
+							658
 						</Text>
 						<Text
 							style={{
@@ -50,7 +50,7 @@ export function Home() {
 								fontFamily: theme.FONTS.MEDIUM,
 							}}
 						>
-							658
+							Viagens realizadas
 						</Text>
 					</View>
 				</MainInfo>
