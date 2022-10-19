@@ -14,6 +14,7 @@ interface PillProps {
 		| "whiteManGlasses"
 		| "whiteManHat"
 		| "whiteWoman"
+		| "link"
 }
 
 export function Pill(props: PillProps) {
