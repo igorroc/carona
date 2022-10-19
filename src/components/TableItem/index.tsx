@@ -31,7 +31,7 @@ export function TableItem(props: ItemProps) {
 	return (
 		<Row
 			style={{
-				backgroundColor: props.variant === "odd" ? "" : "#fff1",
+				backgroundColor: props.variant === "odd" ? "" : "#2c2c2c",
 			}}
 		>
 			<View
