@@ -2,6 +2,8 @@
 	"expo": {
 		"name": "Caroninha",
 		"slug": "caroninha",
+		"description": "Um aplicativo para gerenciar as caronas do meu carro!",
+		"privacy": "hidden",
 		"githubUrl": "https://github.com/igorroc/carona",
 		"version": "1.0.0",
 		"orientation": "portrait",
