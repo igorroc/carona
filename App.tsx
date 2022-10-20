@@ -34,9 +34,14 @@ export default function App() {
 		Mitr_700Bold,
 	})
 
-	const [accessToken, setAccessToken] = useState("")
-	const [userInfo, setUserInfo] = useState({} as any)
-	const [isValid, setIsValid] = useState(false)
+	// const [accessToken, setAccessToken] = useState("")
+	// const [userInfo, setUserInfo] = useState({} as any)
+	// const [isValid, setIsValid] = useState(false)
+	const [accessToken, setAccessToken] = useState("asd")
+	const [userInfo, setUserInfo] = useState({
+		email: "rochawiggle@gmail.com",
+	} as any)
+	const [isValid, setIsValid] = useState(true)
 
 	const [request, response, promptAsync] = Google.useAuthRequest({
 		androidClientId:
