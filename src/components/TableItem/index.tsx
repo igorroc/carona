@@ -18,6 +18,10 @@ export interface ItemProps {
 		| "whiteManGlasses"
 		| "whiteManHat"
 		| "whiteWoman"
+		| "blackManHappy"
+		| "whiteWomanColorful"
+		| "link"
+		| "man"
 	variant?: "odd" | "even"
 }
 export function TableItem(props: ItemProps) {
