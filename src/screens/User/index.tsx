@@ -4,75 +4,51 @@ import { View, ScrollView, Dimensions, ActivityIndicator } from "react-native"
 import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { SectionTitle } from "../../components/SectionTitle"
-import { ItemProps, TableItem } from "../../components/TableItem"
+import { TableItem } from "../../components/TableItem"
 import { TextInput } from "../../components/TextInput"
 import DataAPI from "../../middlewares/googleSheet"
 import { Table, TableHeader, TableHeaderText } from "./styles"
 
-const userList = [
-	{
-		name: "Isabelle Silva dos Santos da Cruz",
-		saldo: 159,
-		avatar: "blackWomanHappy",
-	},
-	{
-		name: "João Victor Oliveira Rupp Rupp",
-		saldo: -3,
-		avatar: "whiteManHat",
-	},
-	{
-		name: "Nicole Rocha",
-		saldo: -5,
-		avatar: "blackWomanNeutral",
-	},
-	{
-		name: "Murilo Patricio Maia",
-		saldo: -4.5,
-		avatar: "whiteManGlasses",
-	},
-	{
-		name: "Michelle Brito Silva Barbosa",
-		saldo: 0,
-		avatar: "whiteWoman",
-	},
-	{
-		name: "Isabelle Silva dos Santos da Cruz",
-		saldo: 159,
-		avatar: "blackWomanHappy",
-	},
-	{
-		name: "João Victor Oliveira Rupp Rupp",
-		saldo: 0,
-		avatar: "whiteManHat",
-	},
-	{
-		name: "Nicole Rocha",
-		saldo: 0,
-		avatar: "blackWomanNeutral",
-	},
-	{
-		name: "Murilo Patricio Maia",
-		saldo: -4.5,
-		avatar: "whiteManGlasses",
-	},
-	{
-		name: "Michelle Brito Silva Barbosa",
-		saldo: -5,
-		avatar: "whiteWoman",
-	},
-] as Array<ItemProps>
-
 export function User() {
 	const theme = useTheme()
 	const height = Dimensions.get("window").height
-	const [data, setData] = useState()
-	useEffect(() => {
-		DataAPI("Total").then((x) => {
-			setData(x)
-		})
-	}, [])
+	const [data, setData] = useState([])
+	const [users, setUsers] = useState([{} as any])
 
-	if (!data) {
+	useEffect(() => {
+		DataAPI("Total").then((response) => {
+			if (!response) return
+
+			const newList = new Array()
+
+			response.forEach((item: Array<string>) => {
+				if (
+					item[0] === "TOTAL:" ||
+					item[0] === "Viagens" ||
+					Number(item[0]) ||
+					!item[0] ||
+					item[0] === "" ||
+					item[0] === " " ||
+					item[0] === "Nome"
+				)
+					return
+
+				newList.push({
+					name: item[0],
+					viagens: Number(item[1]),
+					parcial: Number(item[2]),
+					pago: Number(item[3]),
+					saldo: Number(item[4]),
+				})
+			})
+
+			setUsers(newList)
+
+			setData(response)
+		})
+	}, [users])
+
+	if (!data || data.length == 0) {
 		return (
 			<ActivityIndicator
 				size="large"
@@ -94,7 +70,11 @@ export function User() {
 					alignItems: "center",
 				}}
 			>
-				<SectionTitle>Passageiros</SectionTitle>
+				<SectionTitle>
+					{`Passageiros ${
+						users.length > 1 ? `(${users.length})` : ""
+					}`}
+				</SectionTitle>
 				<TextInput
 					placeholder="Buscar"
 					style={{
@@ -121,15 +101,43 @@ export function User() {
 						maxHeight: height - 400,
 					}}
 				>
-					{userList.map((user, index) => (
-						<TableItem
-							key={index}
-							name={user.name}
-							saldo={user.saldo}
-							avatar={user.avatar}
-							variant={index % 2 === 0 ? "even" : "odd"}
-						/>
-					))}
+					{(!users || users.length <= 1) && (
+						<View
+							style={{
+								flex: 1,
+								justifyContent: "center",
+								alignItems: "center",
+								width: "100%",
+								height: "100%",
+								paddingTop: 50,
+							}}
+						>
+							<ActivityIndicator
+								size="large"
+								animating={true}
+								color={theme.COLORS.PRIMARY}
+								style={{
+									flex: 1,
+								}}
+							/>
+						</View>
+					)}
+					{users &&
+						users.map(
+							(user, index) =>
+								user.name && (
+									<TableItem
+										key={index}
+										name={user.name}
+										saldo={user.saldo}
+										// avatar={avatars[user.name] || "man"}
+										avatar={user.avatar || "man"}
+										variant={
+											index % 2 === 0 ? "even" : "odd"
+										}
+									/>
+								)
+						)}
 				</ScrollView>
 			</Table>
 		</MaxWidthWrapper>
