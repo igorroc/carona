@@ -14,6 +14,7 @@ export function User() {
 	const height = Dimensions.get("window").height
 	const [data, setData] = useState([])
 	const [users, setUsers] = useState([{} as any])
+	const [search, setSearch] = useState("")
 
 	useEffect(() => {
 		DataAPI("Total").then((response) => {
@@ -81,6 +82,8 @@ export function User() {
 						width: 150,
 						height: 40,
 					}}
+					value={search}
+					onChangeText={(text: string) => setSearch(text)}
 				/>
 			</View>
 			<Table>
@@ -125,7 +128,8 @@ export function User() {
 					{users &&
 						users.map(
 							(user, index) =>
-								user.name && (
+								user.name &&
+								user.name.toLowerCase().includes(search.toLowerCase()) && (
 									<TableItem
 										key={index}
 										name={user.name}
