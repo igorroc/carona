@@ -52,23 +52,13 @@ export function Calculator() {
 
 	return (
 		<MaxWidthWrapper>
-			<ScrollView
-				showsVerticalScrollIndicator={false}
-				style={{
-					maxHeight: height - 270,
-				}}
-			>
-				<View
-					style={{
-						marginBottom: 20,
-					}}
-				>
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<View>
 					<SectionTitle>Distância base (em km)</SectionTitle>
 					<View
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -79,17 +69,12 @@ export function Calculator() {
 						/>
 					</View>
 				</View>
-				<View
-					style={{
-						marginBottom: 20,
-					}}
-				>
+				<View>
 					<SectionTitle>Valor base (em R$)</SectionTitle>
 					<View
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -100,17 +85,12 @@ export function Calculator() {
 						/>
 					</View>
 				</View>
-				<View
-					style={{
-						marginBottom: 20,
-					}}
-				>
+				<View>
 					<SectionTitle>Sua distância</SectionTitle>
 					<View
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 5,
 						}}
 					>
 						<TextInput
@@ -123,7 +103,6 @@ export function Calculator() {
 				</View>
 				<View
 					style={{
-						marginBottom: 20,
 						alignItems: "center",
 					}}
 				>
@@ -132,7 +111,6 @@ export function Calculator() {
 						style={{
 							flexDirection: "row",
 							flex: 1,
-							marginTop: 5,
 						}}
 					>
 						<LinearGradient
@@ -158,6 +136,7 @@ export function Calculator() {
 									fontFamily: theme.FONTS.BOLD,
 									// flex: 1,
 									flexGrow: 1,
+									color: theme.COLORS.WHITE,
 								}}
 							>
 								{!Number(result) || Number(result) < 0
