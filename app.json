@@ -1,48 +1,56 @@
 {
-	"expo": {
-		"name": "Caroninha",
-		"slug": "caroninha",
-		"description": "Um aplicativo para gerenciar as caronas do meu carro!",
-		"privacy": "hidden",
-		"githubUrl": "https://github.com/igorroc/carona",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/icon.png",
-		"userInterfaceStyle": "dark",
-		"backgroundColor": "#1e1e1e",
-		"primaryColor": "#0DC29C",
-		"scheme": "redirectcaroninha",
-		"splash": {
-			"image": "./assets/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#1E1E1E"
-		},
-		"updates": {
-			"fallbackToCacheTimeout": 0
-		},
-		"assetBundlePatterns": ["**/*"],
-		"ios": {
-			"supportsTablet": true
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/favicon.png",
-				"backgroundColor": "#00A884"
-			},
-			"backgroundColor": "#1E1E1E",
-			"package": "com.igorroc.caroninha"
-		},
-		"web": {
-			"favicon": "./assets/favicon.png"
-		},
-		"androidStatusBar": {
-			"barStyle": "dark-content",
-			"backgroundColor": "#00A884"
-		},
-		"androidNavigationBar": {
-			"barStyle": "dark-content",
-			"backgroundColor": "#151414"
-		},
-		"sdkVersion": "46.0.0"
-	}
+  "expo": {
+    "name": "Caroninha",
+    "slug": "caroninha",
+    "description": "Um aplicativo para gerenciar as caronas do meu carro!",
+    "privacy": "hidden",
+    "githubUrl": "https://github.com/igorroc/carona",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#1e1e1e",
+    "primaryColor": "#0DC29C",
+    "scheme": "redirectcaroninha",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1E1E1E"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.igorroc.caroninha"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/favicon.png",
+        "backgroundColor": "#00A884"
+      },
+      "backgroundColor": "#1E1E1E",
+      "package": "com.igorroc.caroninha"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#00A884"
+    },
+    "androidNavigationBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#151414"
+    },
+    "sdkVersion": "46.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "c8f73272-5a5f-4565-be12-f568d4f461cc"
+      }
+    }
+  }
 }
