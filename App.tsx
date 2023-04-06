@@ -39,6 +39,7 @@ export default function App() {
 	// const [accessToken, setAccessToken] = useState("")
 	// const [userInfo, setUserInfo] = useState({} as any)
 	// const [isValid, setIsValid] = useState(false)
+	
 	const [accessToken, setAccessToken] = useState("asd")
 	const [userInfo, setUserInfo] = useState({
 		email: "rochawiggle@gmail.com",
@@ -46,10 +47,8 @@ export default function App() {
 	const [isValid, setIsValid] = useState(true)
 
 	const [request, response, promptAsync] = Google.useAuthRequest({
-		androidClientId:
-			"415495582778-ka5brgviutt0camdlag76sp3krrfhv8o.apps.googleusercontent.com",
-		expoClientId:
-			"415495582778-sekklfgll3ddkv34itaovuf3q7aomjui.apps.googleusercontent.com",
+		androidClientId: ANDROID_CLIENT_ID,
+		expoClientId: EXPO_CLIENT_ID,
 	})
 
 	useEffect(() => {

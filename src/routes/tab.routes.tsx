@@ -16,21 +16,23 @@ const Tab = createBottomTabNavigator()
 
 const Tabs = {
 	Home: {
-		activeIcon: "home"
+		activeIcon: "home",
 	},
 	User: {
-		activeIcon: "user-alt"
+		activeIcon: "user-alt",
 	},
 	NewTrip: {
-		activeIcon: "plus"
+		activeIcon: "plus",
 	},
 	Cash: {
-		activeIcon: "dollar-sign"
+		activeIcon: "dollar-sign",
 	},
 	Calculator: {
-		activeIcon: "calculator"
-	}
+		activeIcon: "calculator",
+	},
 }
+
+type TabName = keyof typeof Tabs
 
 const config = {
 	animation: "spring",
@@ -40,16 +42,16 @@ const config = {
 		mass: 3,
 		overshootClamping: true,
 		restDisplacementThreshold: 0.01,
-		restSpeedThreshold: 0.01
-	}
+		restSpeedThreshold: 0.01,
+	},
 }
 
 const closeConfig = {
 	animation: "timing",
 	config: {
 		duration: 500,
-		easing: Easing.linear
-	}
+		easing: Easing.linear,
+	},
 }
 
 export function TabRoutes() {
@@ -61,7 +63,7 @@ export function TabRoutes() {
 					borderBottomWidth: 0,
 					borderBottomColor: "transparent",
 					shadowColor: "transparent",
-					height: 170
+					height: 170,
 				},
 				tabBarInactiveTintColor: THEME.COLORS.GRAY,
 				tabBarActiveTintColor: THEME.COLORS.PRIMARY,
@@ -72,7 +74,7 @@ export function TabRoutes() {
 					height: 70,
 					borderTopWidth: 0,
 					borderTopColor: "transparent",
-					shadowColor: "transparent"
+					shadowColor: "transparent",
 				},
 				tabBarShowLabel: false,
 				tabBarIcon: ({ focused, color, size }) => {
@@ -86,7 +88,6 @@ export function TabRoutes() {
 									borderRadius: 10,
 									justifyContent: "center",
 									alignItems: "center",
-									marginBottom: 80
 								}}
 							>
 								<FontAwesome5
@@ -97,7 +98,7 @@ export function TabRoutes() {
 							</View>
 						)
 					}
-					let index = route.name
+					let index = route.name as TabName
 					return (
 						<FontAwesome5
 							name={Tabs[index].activeIcon}
@@ -110,22 +111,22 @@ export function TabRoutes() {
 				gestureDirection: "horizontal",
 				transitionSpec: {
 					open: config,
-					close: closeConfig
-				}
+					close: closeConfig,
+				},
 			})}
 		>
 			<Tab.Screen
 				name="Home"
 				component={Home}
 				options={{
-					headerTitle: () => <Header />
+					headerTitle: () => <Header />,
 				}}
 			/>
 			<Tab.Screen
 				name="User"
 				component={User}
 				options={{
-					headerTitle: () => <Header />
+					headerTitle: () => <Header />,
 				}}
 			/>
 			<Tab.Screen
