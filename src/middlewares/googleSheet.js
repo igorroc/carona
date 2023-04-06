@@ -14,7 +14,15 @@ const DataAPI = async (page) => {
 	}
 }
 
-const getAvatars = async () => {
+export const getSaldo = async () => {
+	let saldo = 0
+	await DataAPI("Total").then((response) => {
+		saldo = response[1][5]
+	})
+
+	return saldo
+}
+
 	let avatars = {}
 
 	await DataAPI("Personagens").then((response) => {

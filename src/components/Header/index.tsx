@@ -1,16 +1,27 @@
 import { FontAwesome5 } from "@expo/vector-icons"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Text, TouchableOpacity, View } from "react-native"
 import { useTheme } from "styled-components"
 import { MaxWidthWrapper } from "../MaxWidthWrapper"
 
 import { Wrapper, Sub, Title, Saldo } from "./styles"
+import { getSaldo } from "../../middlewares/googleSheet"
 
 export function Header() {
-	const [showSaldo, setShowSaldo] = React.useState(false)
+	const [showSaldo, setShowSaldo] = useState(false)
 	const theme = useTheme()
-	let saldo = "R$ 9.999,00"
+	const [saldo, setSaldo] = useState(0)
+
+	useEffect(() => {
+		async function getData() {
+			await getSaldo().then((res) => {
+				setSaldo(res)
+			})
+		}
+
+		getData()
+	}, [])
 
 	function handleClick() {
 		setShowSaldo(!showSaldo)
@@ -58,7 +69,7 @@ export function Header() {
 											color: theme.COLORS.WHITE,
 										}}
 									>
-										{saldo}
+										R$ {saldo.toFixed(2)}
 									</Text>
 								</View>
 							)}
