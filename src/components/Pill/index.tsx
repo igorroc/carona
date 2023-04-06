@@ -18,6 +18,7 @@ interface PillProps {
 		| "whiteManHat"
 		| "whiteWoman"
 		| "link"
+		| "man"
 
 	style?: StyledProps<any>
 }

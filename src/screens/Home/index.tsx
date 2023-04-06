@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
@@ -10,17 +10,63 @@ import { MainInfo } from "../../components/MainInfo"
 import { useTheme } from "styled-components"
 import { DestaqueCard } from "../../components/DestaqueCard"
 import { LinkButton } from "../../components/LinkButton"
+import {
+	getLastPayer,
+	getLastTrip,
+	getMostTripsPerson,
+	getTripsAmount,
+	getWorstPayer,
+} from "../../middlewares/googleSheet"
+
+type UserInfo = {
+	name: string
+	avatar: string
+}
+
+type LastTripType = {
+	users: Array<UserInfo>
+	date: string
+}
 
 export function Home() {
 	const theme = useTheme()
 	const height = Dimensions.get("window").height
+
+	const [tripsAmount, setTripsAmount] = useState(0)
+	const [lastPayer, setLastPayer] = useState("")
+	const [mostTrips, setMostTrips] = useState("")
+	const [worstPayer, setWorstPayer] = useState("")
+
+	const [lastTrip, setLastTrip] = useState<LastTripType>()
+
+	useEffect(() => {
+		async function getData() {
+			await getTripsAmount().then((res) => {
+				setTripsAmount(res)
+			})
+			await getLastPayer().then((res) => {
+				setLastPayer(res)
+			})
+			await getWorstPayer().then((res) => {
+				setWorstPayer(res)
+			})
+			await getMostTripsPerson().then((res) => {
+				setMostTrips(res)
+			})
+			await getLastTrip().then((res) => {
+				setLastTrip(res)
+			})
+		}
+
+		getData()
+	}, [])
 
 	return (
 		<MaxWidthWrapper>
 			<ScrollView
 				showsVerticalScrollIndicator={false}
 				style={{
-					maxHeight: height - 310,
+					// maxHeight: height - 310,
 					flex: 1,
 				}}
 			>
@@ -41,7 +87,7 @@ export function Home() {
 								fontFamily: theme.FONTS.BOLD,
 							}}
 						>
-							658
+							{tripsAmount}
 						</Text>
 						<Text
 							style={{
@@ -67,27 +113,17 @@ export function Home() {
 					>
 						<DestaqueCard
 							name="Último pagador"
-							description="João Rupp"
+							description={lastPayer}
 							icon="dollar-sign"
 						/>
 						<DestaqueCard
 							name="Mais viagens"
-							description="Isabelle S. Cruz"
+							description={mostTrips}
 							icon="car"
 						/>
 						<DestaqueCard
-							name="Mais idas"
-							description="Isabelle S. Cruz"
-							icon="plane-departure"
-						/>
-						<DestaqueCard
-							name="Mais voltas"
-							description="Nicole Rocha"
-							icon="plane-arrival"
-						/>
-						<DestaqueCard
 							name="Mal pagador"
-							description="Alice Martins"
+							description={worstPayer}
 							icon="skull"
 						/>
 					</ScrollView>
@@ -98,15 +134,22 @@ export function Home() {
 						marginBottom: 40,
 					}}
 				>
-					<SectionTitle>Última Viagem</SectionTitle>
+					<SectionTitle>
+						Última Viagem {lastTrip ? `(${lastTrip.date})` : ""}
+					</SectionTitle>
 					<ScrollView
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}
 					>
-						<Pill name="João Rupp" avatar="whiteManHat" />
-						<Pill name="Isabelle Cruz" avatar="blackWomanHappy" />
-						<Pill name="Michelle Brito" avatar="whiteWoman" />
-						<Pill name="Nicole Rocha" avatar="blackWomanNeutral" />
+						{lastTrip &&
+							lastTrip.users.length > 0 &&
+							lastTrip.users.map((user, index) => (
+								<Pill
+									name={user.name}
+									avatar="man"
+									key={index}
+								/>
+							))}
 					</ScrollView>
 				</View>
 				<View>

@@ -129,7 +129,9 @@ export function User() {
 						users.map(
 							(user, index) =>
 								user.name &&
-								user.name.toLowerCase().includes(search.toLowerCase()) && (
+								user.name
+									.toLowerCase()
+									.includes(search.toLowerCase()) && (
 									<TableItem
 										key={index}
 										name={user.name}
