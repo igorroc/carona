@@ -20,6 +20,8 @@ import * as Google from "expo-auth-session/providers/google"
 import * as WebBrowser from "expo-web-browser"
 import { GoogleLoginButton } from "./src/components/GoogleLoginButton"
 
+import { ANDROID_CLIENT_ID, EXPO_CLIENT_ID } from "@env"
+
 WebBrowser.maybeCompleteAuthSession()
 
 const authenticatedUsers = ["rochawiggle@gmail.com"]

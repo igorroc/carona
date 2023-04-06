@@ -1,3 +1,5 @@
+import { GOOGLE_SPREADSHEET_ID, GOOGLE_SPREADSHEET_API_KEY } from "@env"
+
 const DataAPI = async (page) => {
 	const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/${page}?valueRenderOption=UNFORMATTED_VALUE&key=${GOOGLE_SPREADSHEET_API_KEY}`
 
@@ -24,6 +26,15 @@ const getAvatars = async () => {
 	})
 
 	return avatars
+}
+
+const getLastPayer = async () => {
+	let lastPayer = {}
+	await DataAPI("Caixa").then((response) => {
+		lastPayer = response[response.length - 1]
+	})
+
+	return lastPayer
 }
 
 export default DataAPI
