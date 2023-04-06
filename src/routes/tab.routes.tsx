@@ -63,7 +63,7 @@ export function TabRoutes() {
 					borderBottomWidth: 0,
 					borderBottomColor: "transparent",
 					shadowColor: "transparent",
-					height: 170,
+					height: 120,
 				},
 				tabBarInactiveTintColor: THEME.COLORS.GRAY,
 				tabBarActiveTintColor: THEME.COLORS.PRIMARY,
