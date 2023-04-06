@@ -16,6 +16,24 @@ export default DataAPI = async (page) => {
 	}
 }
 
+export const getNames = async () => {
+	let names = []
+
+	await DataAPI("Total")
+		.then((response) => {
+			if (response) {
+				response.map((row, i) => {
+					if (row[0] && i >= 4) {
+						names.push({ title: row[0], id: i })
+					}
+				})
+			}
+		})
+		.catch((err) => console.log(err))
+
+	return names
+}
+
 export const getSaldo = async () => {
 	let saldo = 0
 	await DataAPI("Total")
