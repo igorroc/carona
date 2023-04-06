@@ -6,8 +6,10 @@ export default DataAPI = async (page) => {
 	try {
 		let data = await fetch(sheetURL)
 		let { values } = await data.json()
-		let [, ...Data] = await values.map((data) => data)
-		return Data
+		if (values) {
+			let [, ...Data] = await values.map((data) => data)
+			return Data
+		}
 	} catch (err) {
 		console.log("Error", err.message)
 		console.log(err)
@@ -16,52 +18,78 @@ export default DataAPI = async (page) => {
 
 export const getSaldo = async () => {
 	let saldo = 0
-	await DataAPI("Total").then((response) => {
-		saldo = response[1][5]
-	}).catch((err) => console.log(err))
+	await DataAPI("Total")
+		.then((response) => {
+			if (response) {
+				if (response[1]) {
+					saldo = response[1][5]
+				}
+			}
+		})
+		.catch((err) => console.log(err))
 
 	return saldo
 }
 
 export const getTripsAmount = async () => {
 	let trips = 0
-	await DataAPI("Total").then((response) => {
-		trips = response[1][0]
-	}).catch((err) => console.log(err))
+	await DataAPI("Total")
+		.then((response) => {
+			if (response) {
+				if (response[1]) {
+					trips = response[1][0]
+				}
+			}
+		})
+		.catch((err) => console.log(err))
 
 	return trips
 }
 
-export const getAvatars = async () => {
-	let avatars = {}
+export const getUserAvatar = async (name) => {
+	let avatar = "man"
 
-	await DataAPI("Personagens").then((response) => {
-		console.log(response)
-		data.forEach((item) => {
-			console.log(item)
-			avatars[item[0]] = item[1] || "man"
+	await DataAPI("Personagens")
+		.then((response) => {
+			if (response) {
+				response.map((row) => {
+					if (row[1] && row[0] == name) {
+						avatar = row[1]
+					}
+				})
+			}
 		})
-	})
+		.catch((err) => console.log("GetUser - Error:", err))
 
-	return avatars
+	return avatar
 }
 
 export const getLastPayer = async () => {
 	let lastPayer = ""
-	await DataAPI("Caixa").then((response) => {
-		let row = response[response.length - 1]
-		lastPayer = row[0]
-	}).catch((err) => console.log(err))
+	await DataAPI("Caixa")
+		.then((response) => {
+			if (response) {
+				let row = response[response.length - 1]
+				lastPayer = row[0]
+			}
+		})
+		.catch((err) => console.log(err))
 
 	return lastPayer
 }
 
 export const getMostTripsPerson = async () => {
 	let mostTripsPerson = ""
-	await DataAPI("Total").then((response) => {
-		let row = response[4]
-		mostTripsPerson = row[0]
-	}).catch((err) => console.log(err))
+	await DataAPI("Total")
+		.then((response) => {
+			if (response) {
+				let row = response[4]
+				if (row) {
+					mostTripsPerson = row[0]
+				}
+			}
+		})
+		.catch((err) => console.log(err))
 
 	return mostTripsPerson
 }
@@ -70,16 +98,20 @@ export const getWorstPayer = async () => {
 	let worstPayer = ""
 	let worstPayerValue = 0
 
-	await DataAPI("Total").then((response) => {
-		response.map((row) => {
-			if (row.length == 5) {
-				if (worstPayerValue > row[4]) {
-					worstPayerValue = row[4]
-					worstPayer = row[0]
-				}
+	await DataAPI("Total")
+		.then((response) => {
+			if (response) {
+				response.map((row) => {
+					if (row.length == 5) {
+						if (worstPayerValue > row[4]) {
+							worstPayerValue = row[4]
+							worstPayer = row[0]
+						}
+					}
+				})
 			}
 		})
-	}).catch((err) => console.log(err))
+		.catch((err) => console.log(err))
 
 	return worstPayer
 }
@@ -90,26 +122,35 @@ export const getLastTrip = async () => {
 		date: "",
 	}
 
-	// type UserInfo = {
-	// 	name: string
-	// 	avatar: string
-	// }
+	await DataAPI("DataBase")
+		.then(async (response) => {
+			if (response) {
+				if (response) {
+					let lastRow = response[response.length - 1]
+					let destination = lastRow[2]
+					let dateString = fixDate(lastRow[1])
+					lastTrip.date = dateString
 
-	await DataAPI("DataBase").then((response) => {
-		let lastRow = response[response.length - 1]
-		let destination = lastRow[2]
-		let dateString = fixDate(lastRow[1])
-		lastTrip.date = dateString
-
-		for (let i = response.length - 1; i > response.length - 5; i--) {
-			let row = response[i]
-			if (row[2] == destination && fixDate(row[1]) == dateString) {
-				lastTrip.users.push({ name: row[0] })
-			} else {
-				break
+					for (
+						let i = response.length - 1;
+						i > response.length - 5;
+						i--
+					) {
+						let row = response[i]
+						if (
+							row[2] == destination &&
+							fixDate(row[1]) == dateString
+						) {
+							let avatar = await getUserAvatar(row[0])
+							lastTrip.users.push({ name: row[0], avatar })
+						} else {
+							break
+						}
+					}
+				}
 			}
-		}
-	}).catch((err) => console.log(err))
+		})
+		.catch((err) => console.log(err))
 
 	return lastTrip
 }

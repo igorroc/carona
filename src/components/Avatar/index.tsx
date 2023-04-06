@@ -9,7 +9,7 @@ import whiteWomanColorful from "../../assets/avatar/whiteWomanColorful.png"
 import man from "../../assets/avatar/man.png"
 import link from "../../assets/icon/link.png"
 
-export const user = {
+export const user  = {
 	blackWomanHappy,
 	blackWomanNeutral,
 	whiteManBeard,
@@ -20,4 +20,19 @@ export const user = {
 	whiteWomanColorful,
 	link,
 	man,
+}
+
+export type AvatarType = 'blackWomanHappy' | 'blackWomanNeutral' | 'whiteManBeard' | 'whiteManGlasses' | 'whiteManHat' | 'whiteWoman' | 'blackManHappy' | 'whiteWomanColorful' | 'link' | 'man';
+
+
+export interface IAvatar {
+	avatar:
+		| "blackWomanHappy"
+		| "blackWomanNeutral"
+		| "whiteManBeard"
+		| "whiteManGlasses"
+		| "whiteManHat"
+		| "whiteWoman"
+		| "link"
+		| "man"
 }

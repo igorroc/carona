@@ -5,20 +5,12 @@ import { TouchableOpacity } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 
 import { Avatar, Name, Wrapper } from "./styles"
-import { user } from "../Avatar"
+import { AvatarType, IAvatar, user } from "../Avatar"
 import { StyledProps } from "styled-components"
 
 interface PillProps {
 	name: string
-	avatar:
-		| "blackWomanHappy"
-		| "blackWomanNeutral"
-		| "whiteManBeard"
-		| "whiteManGlasses"
-		| "whiteManHat"
-		| "whiteWoman"
-		| "link"
-		| "man"
+	avatar: AvatarType
 
 	style?: StyledProps<any>
 }
