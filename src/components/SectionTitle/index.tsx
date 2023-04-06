@@ -4,7 +4,7 @@ import { Text } from "react-native"
 import { useTheme } from "styled-components"
 
 interface TitleProps {
-	children: string
+	children: string | string[] | JSX.Element | JSX.Element[]
 }
 
 export function SectionTitle(props: TitleProps) {
