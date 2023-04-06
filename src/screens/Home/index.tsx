@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react"
 
-import { Dimensions, Image, ScrollView, Text, View } from "react-native"
+import {
+	ActivityIndicator,
+	Dimensions,
+	Image,
+	ScrollView,
+	Text,
+	View,
+} from "react-native"
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { Pill } from "../../components/Pill"
 import { SectionTitle } from "../../components/SectionTitle"
@@ -15,12 +22,14 @@ import {
 	getLastTrip,
 	getMostTripsPerson,
 	getTripsAmount,
+	getUserAvatar,
 	getWorstPayer,
 } from "../../middlewares/googleSheet"
+import { AvatarType } from "../../components/Avatar"
 
 type UserInfo = {
 	name: string
-	avatar: string
+	avatar: AvatarType
 }
 
 type LastTripType = {
@@ -90,24 +99,37 @@ export function Home() {
 						}}
 					/>
 					<View>
-						<Text
-							style={{
-								fontSize: theme.FONTSIZES.H3,
-								color: theme.COLORS.WHITE,
-								fontFamily: theme.FONTS.BOLD,
-							}}
-						>
-							{tripsAmount}
-						</Text>
-						<Text
-							style={{
-								fontSize: theme.FONTSIZES.H7,
-								color: theme.COLORS.WHITE50,
-								fontFamily: theme.FONTS.MEDIUM,
-							}}
-						>
-							Viagens realizadas
-						</Text>
+						{tripsAmount ? (
+							<>
+								<Text
+									style={{
+										fontSize: theme.FONTSIZES.H3,
+										color: theme.COLORS.WHITE,
+										fontFamily: theme.FONTS.BOLD,
+									}}
+								>
+									{tripsAmount}
+								</Text>
+								<Text
+									style={{
+										fontSize: theme.FONTSIZES.H7,
+										color: theme.COLORS.WHITE50,
+										fontFamily: theme.FONTS.MEDIUM,
+									}}
+								>
+									Viagens realizadas
+								</Text>
+							</>
+						) : (
+							<ActivityIndicator
+								size="large"
+								animating={true}
+								color={theme.COLORS.PRIMARY}
+								style={{
+									flex: 1,
+								}}
+							/>
+						)}
 					</View>
 				</MainInfo>
 				<View
@@ -121,21 +143,39 @@ export function Home() {
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}
 					>
-						<DestaqueCard
-							name="Último pagador"
-							description={lastPayer}
-							icon="dollar-sign"
-						/>
-						<DestaqueCard
-							name="Mais viagens"
-							description={mostTrips}
-							icon="car"
-						/>
-						<DestaqueCard
-							name="Mal pagador"
-							description={worstPayer}
-							icon="skull"
-						/>
+						{lastPayer && (
+							<DestaqueCard
+								name="Último pagador"
+								description={lastPayer}
+								icon="dollar-sign"
+							/>
+						)}
+						{mostTrips && (
+							<DestaqueCard
+								name="Mais viagens"
+								description={mostTrips}
+								icon="car"
+							/>
+						)}
+						{worstPayer && (
+							<DestaqueCard
+								name="Mal pagador"
+								description={worstPayer}
+								icon="skull"
+							/>
+						)}
+						{!lastPayer || !mostTrips || !worstPayer ? (
+							<ActivityIndicator
+								size="large"
+								animating={true}
+								color={theme.COLORS.PRIMARY}
+								style={{
+									flex: 1,
+								}}
+							/>
+						) : (
+							""
+						)}
 					</ScrollView>
 				</View>
 				<View
@@ -151,12 +191,22 @@ export function Home() {
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}
 					>
+						{!lastTrip && (
+							<ActivityIndicator
+								size="large"
+								animating={true}
+								color={theme.COLORS.PRIMARY}
+								style={{
+									flex: 1,
+								}}
+							/>
+						)}
 						{lastTrip &&
 							lastTrip.users.length > 0 &&
 							lastTrip.users.map((user, index) => (
 								<Pill
 									name={user.name}
-									avatar="man"
+									avatar={user.avatar}
 									key={index}
 								/>
 							))}
@@ -166,7 +216,7 @@ export function Home() {
 					<SectionTitle>Planilha</SectionTitle>
 					<LinkButton url="https://docs.google.com/spreadsheets/d/1XxK_0arRVIOYiK1L4MyT9hODgO-sm8IjEfk8tgGW4QE/edit?usp=sharing">
 						<Pill
-							avatar="link"
+							avatar={"link"}
 							name="Link"
 							style={{
 								maxWidth: 150,
