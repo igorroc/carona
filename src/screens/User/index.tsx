@@ -6,7 +6,7 @@ import { MaxWidthWrapper } from "../../components/MaxWidthWrapper"
 import { SectionTitle } from "../../components/SectionTitle"
 import { TableItem } from "../../components/TableItem"
 import { TextInput } from "../../components/TextInput"
-import DataAPI from "../../middlewares/googleSheet"
+import DataAPI, { getUserAvatar } from "../../middlewares/googleSheet"
 import { Table, TableHeader, TableHeaderText } from "./styles"
 
 export function User() {
@@ -14,39 +14,57 @@ export function User() {
 	const height = Dimensions.get("window").height
 	const [data, setData] = useState([])
 	const [users, setUsers] = useState([{} as any])
+	const [usersAvatar, setUsersAvatar] = useState([{} as any])
 	const [search, setSearch] = useState("")
 
 	useEffect(() => {
-		DataAPI("Total").then((response) => {
-			if (!response) return
+		DataAPI("Total")
+			.then((response) => {
+				if (!response) return
 
-			const newList = new Array()
+				const newList = new Array()
 
-			response.forEach((item: Array<string>) => {
-				if (
-					item[0] === "TOTAL:" ||
-					item[0] === "Viagens" ||
-					Number(item[0]) ||
-					!item[0] ||
-					item[0] === "" ||
-					item[0] === " " ||
-					item[0] === "Nome"
-				)
-					return
+				response.forEach((item: Array<string>) => {
+					if (
+						item[0] === "TOTAL:" ||
+						item[0] === "Viagens" ||
+						Number(item[0]) ||
+						!item[0] ||
+						item[0] === "" ||
+						item[0] === " " ||
+						item[0] === "Nome"
+					)
+						return
 
-				newList.push({
-					name: item[0],
-					viagens: Number(item[1]),
-					parcial: Number(item[2]),
-					pago: Number(item[3]),
-					saldo: Number(item[4]),
+					newList.push({
+						name: item[0],
+						viagens: Number(item[1]),
+						parcial: Number(item[2]),
+						pago: Number(item[3]),
+						saldo: Number(item[4]),
+					})
 				})
+
+				setUsers(newList)
+
+				setData(response)
 			})
+			.catch((err) => console.log(err))
+	}, [])
 
-			setUsers(newList)
+	useEffect(() => {
+		let newArray = [] as any
+		users.forEach(async (item: any) => {
+			if (item) {
+				let avatar = await getUserAvatar(item.name)
 
-			setData(response)
+				if (avatar) {
+					newArray.push({ name: item.name, avatar: avatar })
+				}
+			}
 		})
+
+		setUsersAvatar(newArray)
 	}, [users])
 
 	if (!data || data.length == 0) {
@@ -100,8 +118,6 @@ export function User() {
 					style={{
 						flex: 1,
 						width: "100%",
-						height: 200,
-						maxHeight: height - 400,
 					}}
 				>
 					{(!users || users.length <= 1) && (
@@ -136,8 +152,11 @@ export function User() {
 										key={index}
 										name={user.name}
 										saldo={user.saldo}
-										// avatar={avatars[user.name] || "man"}
-										avatar={user.avatar || "man"}
+										avatar={
+											usersAvatar[index]
+												? usersAvatar[index].avatar
+												: "man"
+										}
 										variant={
 											index % 2 === 0 ? "even" : "odd"
 										}
