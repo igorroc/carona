@@ -41,21 +41,31 @@ export function Home() {
 
 	useEffect(() => {
 		async function getData() {
-			await getTripsAmount().then((res) => {
-				setTripsAmount(res)
-			})
-			await getLastPayer().then((res) => {
-				setLastPayer(res)
-			})
-			await getWorstPayer().then((res) => {
-				setWorstPayer(res)
-			})
-			await getMostTripsPerson().then((res) => {
-				setMostTrips(res)
-			})
-			await getLastTrip().then((res) => {
-				setLastTrip(res)
-			})
+			await getTripsAmount()
+				.then((res) => {
+					setTripsAmount(res)
+				})
+				.catch((err) => console.log(err))
+			await getLastPayer()
+				.then((res) => {
+					setLastPayer(res)
+				})
+				.catch((err) => console.log(err))
+			await getWorstPayer()
+				.then((res) => {
+					setWorstPayer(res)
+				})
+				.catch((err) => console.log(err))
+			await getMostTripsPerson()
+				.then((res) => {
+					setMostTrips(res)
+				})
+				.catch((err) => console.log(err))
+			await getLastTrip()
+				.then((res) => {
+					setLastTrip(res)
+				})
+				.catch((err) => console.log(err))
 		}
 
 		getData()

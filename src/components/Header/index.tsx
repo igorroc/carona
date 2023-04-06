@@ -15,9 +15,11 @@ export function Header() {
 
 	useEffect(() => {
 		async function getData() {
-			await getSaldo().then((res) => {
-				setSaldo(res)
-			})
+			await getSaldo()
+				.then((res) => {
+					setSaldo(res)
+				})
+				.catch((err) => console.log(err))
 		}
 
 		getData()

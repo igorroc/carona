@@ -18,7 +18,7 @@ export const getSaldo = async () => {
 	let saldo = 0
 	await DataAPI("Total").then((response) => {
 		saldo = response[1][5]
-	})
+	}).catch((err) => console.log(err))
 
 	return saldo
 }
@@ -27,7 +27,7 @@ export const getTripsAmount = async () => {
 	let trips = 0
 	await DataAPI("Total").then((response) => {
 		trips = response[1][0]
-	})
+	}).catch((err) => console.log(err))
 
 	return trips
 }
@@ -51,7 +51,7 @@ export const getLastPayer = async () => {
 	await DataAPI("Caixa").then((response) => {
 		let row = response[response.length - 1]
 		lastPayer = row[0]
-	})
+	}).catch((err) => console.log(err))
 
 	return lastPayer
 }
@@ -61,7 +61,7 @@ export const getMostTripsPerson = async () => {
 	await DataAPI("Total").then((response) => {
 		let row = response[4]
 		mostTripsPerson = row[0]
-	})
+	}).catch((err) => console.log(err))
 
 	return mostTripsPerson
 }
@@ -79,7 +79,7 @@ export const getWorstPayer = async () => {
 				}
 			}
 		})
-	})
+	}).catch((err) => console.log(err))
 
 	return worstPayer
 }
@@ -109,7 +109,7 @@ export const getLastTrip = async () => {
 				break
 			}
 		}
-	})
+	}).catch((err) => console.log(err))
 
 	return lastTrip
 }
